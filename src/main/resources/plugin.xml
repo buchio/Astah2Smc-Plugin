@@ -13,7 +13,7 @@
          <action
 			   label="%menu_label"
                icon="icons/sample.gif"
-               class="com.github.buchio.Astah2Smc.TemplateAction"
+               class="com.github.buchio.Astah2Smc.Action"
                tooltip="%menu_tooltip"
                menubarPath="tool/Astah2Smc/"
                id="Astah2Smc">
