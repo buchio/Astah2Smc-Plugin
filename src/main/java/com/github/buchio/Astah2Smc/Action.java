@@ -20,7 +20,12 @@ public class Action implements IPluginActionDelegate {
 			ProjectAccessor projectAccessor = api.getProjectAccessor();
 			HashMap<?, ?> a = (new AstahProjectToHash(projectAccessor.getProject()))
 					.getHash().get("classes");
-			JOptionPane.showMessageDialog(window.getParent(), "Action");
+			JFileChooser filechooser = new JFileChooser();
+			filechooser.setDialogTitle("Select Output Directory.");
+			filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			if( filechooser.showSaveDialog(window.getParent()) == JFileChooser.APPROVE_OPTION ) {
+				System.out.print( "JFileChooser : " + filechooser.getSelectedFile() );
+			}
 		} catch (ProjectNotFoundException e) {
 			String message = "Project is not opened.Please open the project or create new project.";
 			JOptionPane.showMessageDialog(window.getParent(), message,
