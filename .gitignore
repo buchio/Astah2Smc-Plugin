@@ -1,6 +1,9 @@
+*.o
+*.obj
 *_sm.h
 *_sm.c
 *_sm.cpp
+*_sm.rb
 *.dSYM
 *.lock
 *.back
@@ -10,3 +13,10 @@ target
 examples/output
 !examples/output/export-smc-file-here-to-test
 
+/examples/C++/EX1/checkstring
+/examples/C++/EX2/checkstring
+/examples/C++/EX3/checkstring
+/examples/C++/EX4/traffic
+/examples/C++/EX5/sleeper
+/examples/C++/EX6/client
+/examples/C++/EX6/server

@@ -32,7 +32,7 @@
 
 SM_SOURCES=     AppClass.sm
 SOURCES=        $(SM_SOURCES:%.sm=%_sm.rb)
-CHECKSTRING=    ruby -I .. checkstring.rb
+CHECKSTRING=    ruby -I.. -I. checkstring.rb
 
 # Uncomment to turn on debug message generation.
 TRACE=          -g
