@@ -1,1 +1,8 @@
-/target
+*.lock
+*.back
+*.bak
+*~
+target
+examples/output
+!examples/output/export-smc-file-here-to-test
+
