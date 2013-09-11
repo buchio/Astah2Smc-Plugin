@@ -1,3 +1,7 @@
+*_sm.h
+*_sm.c
+*_sm.cpp
+*.dSYM
 *.lock
 *.back
 *.bak
