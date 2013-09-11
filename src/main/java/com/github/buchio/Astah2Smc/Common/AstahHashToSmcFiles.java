@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class AstahHashToSmcFiles {
 	String mBaseDir;
 
-	AstahHashToSmcFiles(String basedir) {
+	public AstahHashToSmcFiles(String basedir) {
 		mBaseDir = basedir;
 	}
 

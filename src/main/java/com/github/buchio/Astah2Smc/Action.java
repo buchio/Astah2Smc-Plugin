@@ -2,29 +2,31 @@ package com.github.buchio.Astah2Smc;
 
 import java.util.HashMap;
 
-import javax.swing.JOptionPane;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import com.change_vision.jude.api.inf.AstahAPI;
 import com.change_vision.jude.api.inf.exception.ProjectNotFoundException;
 import com.change_vision.jude.api.inf.project.ProjectAccessor;
 import com.change_vision.jude.api.inf.ui.IPluginActionDelegate;
 import com.change_vision.jude.api.inf.ui.IWindow;
+import com.github.buchio.Astah2Smc.Common.AstahHashToSmcFiles;
 import com.github.buchio.Astah2Smc.Common.AstahProjectToHash;
+
 
 public class Action implements IPluginActionDelegate {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Object run(IWindow window) throws UnExpectedException {
 		try {
 			AstahAPI api = AstahAPI.getAstahAPI();
 			ProjectAccessor projectAccessor = api.getProjectAccessor();
-			HashMap<?, ?> a = (new AstahProjectToHash(projectAccessor.getProject()))
-					.getHash().get("classes");
+			HashMap<String, HashMap> a = (new AstahProjectToHash(projectAccessor.getProject())).getHash().get("classes");
 			JFileChooser filechooser = new JFileChooser();
 			filechooser.setDialogTitle("Select Output Directory.");
 			filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if( filechooser.showSaveDialog(window.getParent()) == JFileChooser.APPROVE_OPTION ) {
-				System.out.print( "JFileChooser : " + filechooser.getSelectedFile() );
+                (new AstahHashToSmcFiles( filechooser.getSelectedFile().toString() )).outputSmcFiles( a );
 			}
 		} catch (ProjectNotFoundException e) {
 			String message = "Project is not opened.Please open the project or create new project.";

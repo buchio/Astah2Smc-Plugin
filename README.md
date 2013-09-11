@@ -26,7 +26,7 @@ Astahでは複数行のActionを記述することができないため、「;�
     		Blocked push(WaitMap::Blocked) {GetResource();}
     	}
 
-下図のように、イベントに「|Push」を付加した上で、遷移先の状態をサブマシン内のスタブ状態として記述します。
+下図のように、イベントに「|push」を付加した上で、遷移先の状態をサブマシン内のスタブ状態として記述します。
 
 ![PushTransition](figures/PushTransition.png)
 
@@ -38,7 +38,7 @@ Astahでは複数行のActionを記述することができないため、「;�
     		Denied pop(FAILED) {cleanUp();}
     	}
 
-下図のように、イベントに「|Pop(復帰先に発行するイベント)」を付加し、「深い履歴状態」へ遷移する形で記述します。
+下図のように、イベントに「|pop(復帰先に発行するイベント)」を付加し、「深い履歴状態」へ遷移する形で記述します。
 
 ![PopTransition](figures/PopTransition.png)
 
@@ -62,3 +62,4 @@ Astahでは複数行のActionを記述することができないため、「;�
 *   浅い履歴状態
 *   ジャンクション
 *   選択
+

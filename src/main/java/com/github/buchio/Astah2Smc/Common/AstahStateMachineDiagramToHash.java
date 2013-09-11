@@ -162,7 +162,7 @@ public class AstahStateMachineDiagramToHash {
 				String[] es = iTransition.getEvent().split("\\|");
 
 				if (es.length > 1) {
-					if (es[1].equals("Push")) {
+					if (es[1].equals("push")) {
 						transition.put("Target",
 								"push(" + iPseudostate.getContainer() + "::"
 										+ target.getName() + ")");
