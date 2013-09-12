@@ -1,3 +1,4 @@
+*.exe
 *.o
 *.obj
 *_sm.*
@@ -6,6 +7,8 @@
 *.back
 *.bak
 *~
+*_flymake.mk
+.DS_Store
 target
 examples/output
 !examples/output/export-smc-file-here-to-test

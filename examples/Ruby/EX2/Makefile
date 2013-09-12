@@ -30,60 +30,28 @@
 # Macros.
 #
 
-SM_SOURCES=     AppClass.sm
-SOURCES=        $(SM_SOURCES:%.sm=%_sm.rb)
+SM_SOURCE_ROOT ?= ../../SmcFiles
+SM_SOURCE_DIR ?= $(SM_SOURCE_ROOT)/EX2
+
+SM_SOURCES=     $(SM_SOURCE_DIR)/AppClass.sm
+SOURCES=        $(notdir $(SM_SOURCES:%.sm=%_sm.rb))
 CHECKSTRING=    ruby -I.. -I. checkstring.rb
 
-# Uncomment to turn on debug message generation.
-TRACE=          -g
+SMC_FLAGS+=     -ruby
 
-# Uncomment to turn on reflection.
-# REFLECT=        -reflect
-
-SMC=            java -jar ../../Smc.jar
-SMC_FLAGS=      -ruby $(TRACE) $(REFLECT)
-
-RM_F=           rm -f
-
-#################################################################
-# Rules.
-#
-
-%_sm.rb :       %.sm
-		$(SMC) $(SMC_FLAGS) $<
-
-%_sm.dot :      %.sm
-		$(SMC) -graph -glevel 1 $<
-
-%_sm.png :      %_sm.dot
-		dot -T png -o $@ $<
-
-%_sm.html :     %.sm
-		$(SMC) -table $<
+include ../../Common.mk
 
 all :           checkstring
 
 checkstring :   $(SOURCES)
 
-test:
+test: all
 		-$(CHECKSTRING) ""
 		-$(CHECKSTRING) 000
 		-$(CHECKSTRING) 00011
 		-$(CHECKSTRING) 111
-		-$(CHECKSTRING) 000111100
-		-$(CHECKSTRING) 00011a1b10c0
-
-graph :         $(SM_SOURCES:%.sm=%_sm.dot)
-
-png :           $(SM_SOURCES:%.sm=%_sm.png)
-
-table :         $(SM_SOURCES:%.sm=%_sm.html)
-
-clean :
-		-$(RM_F) *_sm.rb
-		-$(RM_F) *_sm.dot
-		-$(RM_F) *_sm.png
-		-$(RM_F) *_sm.html
+		-$(CHECKSTRING) 000111100 || true
+		-$(CHECKSTRING) 00011a1b10c0 || true
 
 #
 # CHANGE LOG

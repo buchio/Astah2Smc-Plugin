@@ -29,7 +29,8 @@
 # Macros.
 #
 
-SM_SOURCE_DIR?= ../../SmcFiles/EX1
+SM_SOURCE_ROOT ?= ../../SmcFiles
+SM_SOURCE_DIR ?= $(SM_SOURCE_ROOT)/EX1
 
 SM_SOURCES=     $(SM_SOURCE_DIR)/AppClass.sm
 

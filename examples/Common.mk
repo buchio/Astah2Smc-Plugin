@@ -49,6 +49,9 @@ RM_F=           rm -f
 %_sm.h %_sm.cpp : $(SM_SOURCE_DIR)/%.sm
 		$(SMC) $(SMC_FLAGS) $<
 
+%_sm.rb :       $(SM_SOURCE_DIR)/%.sm
+		$(SMC) $(SMC_FLAGS) $<
+
 %_sm.dot :      $(SM_SOURCE_DIR)/%.sm
 		$(SMC) -d . -graph -glevel 1 $<
 

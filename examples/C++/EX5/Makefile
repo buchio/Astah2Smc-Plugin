@@ -50,7 +50,8 @@
 # Initial revision
 #
 
-SM_SOURCE_DIR?= ../../SmcFiles/EX5
+SM_SOURCE_ROOT ?= ../../SmcFiles
+SM_SOURCE_DIR ?= $(SM_SOURCE_ROOT)/EX5
 
 SM_SOURCES=     $(SM_SOURCE_DIR)/AppClass.sm
 

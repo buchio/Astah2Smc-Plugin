@@ -48,7 +48,8 @@
 # Macros.
 #
 
-SM_SOURCE_DIR?= ../../SmcFiles/EX6
+SM_SOURCE_ROOT ?= ../../SmcFiles
+SM_SOURCE_DIR ?= $(SM_SOURCE_ROOT)/EX6
 
 SM_SOURCES=     $(SM_SOURCE_DIR)/TcpConnection.sm
 COMMON_SOURCES= $(notdir $(SM_SOURCES:.sm=_sm.cpp)) \

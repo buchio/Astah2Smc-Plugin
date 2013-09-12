@@ -54,7 +54,8 @@
 # Macros.
 #
 
-SM_SOURCE_DIR?= ../../SmcFiles/EX4
+SM_SOURCE_ROOT ?= ../../SmcFiles
+SM_SOURCE_DIR ?= $(SM_SOURCE_ROOT)/EX4
 
 SM_SOURCES=     $(SM_SOURCE_DIR)/stoplight_cpp.sm
 
