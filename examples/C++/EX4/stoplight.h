@@ -50,7 +50,7 @@
 //
 
 #include "stoplightdefs.h"
-#include "stoplight_sm.h"
+#include "stoplight_cpp_sm.h"
 
 namespace cpp_ex4
 {
@@ -60,7 +60,7 @@ namespace cpp_ex4
     public:
     protected:
     private:
-        stoplightContext _fsm;
+        stoplight_cppContext _fsm;
 
     // Member functions.
     public:

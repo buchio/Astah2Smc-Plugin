@@ -48,8 +48,10 @@
 # Macros.
 #
 
-SM_SOURCES=     TcpConnection.sm
-COMMON_SOURCES= $(SM_SOURCES:.sm=_sm.cpp) \
+SM_SOURCE_DIR?= ../../SmcFiles/EX6
+
+SM_SOURCES=     $(SM_SOURCE_DIR)/TcpConnection.sm
+COMMON_SOURCES= $(notdir $(SM_SOURCES:.sm=_sm.cpp)) \
                 Eventloop.cpp \
                 TcpSegment.cpp \
                 TcpConnection.cpp \
@@ -65,45 +67,7 @@ COMMON_OBJECTS= $(COMMON_SOURCES:.cpp=.o)
 SERVER_OBJECTS= $(SERVER_SOURCES:.cpp=.o)
 CLIENT_OBJECTS= $(CLIENT_SOURCES:.cpp=.o)
 
-# Uncomment to turn off IOStreams for debug.
-# NO_STREAMS=     -nostreams
-
-# Uncomment to turn on debug message generation.
-TRACE=          -g $(NO_STREAMS)
-
-# Uncomment to turn on serialization.
-# SERIAL=         -serial
-
-# Uncomment to turn off try/catch/rethrow generation.
-# NO_CATCH=       -nocatch
-
-# Uncomment to turn off exception throws.
-# NO_EXCEPT=      -noex
-
-SMC=            java -jar ../../Smc.jar
-SMC_FLAGS=      -c++ $(TRACE) $(SERIAL) $(NO_CATCH) $(NO_EXCEPT)
-
-CXX=            c++
-CPPFLAGS=       -g -Wall -Wextra -I../include
-# CPPFLAGS=       -D_DEBUG -g -I. -I../include
-
-RM_F=           rm -f
-
-#################################################################
-# Rules.
-#
-
-%_sm.h %_sm.cpp : %.sm
-		$(SMC) $(SMC_FLAGS) $<
-
-%_sm.dot :      %.sm
-		$(SMC) -graph -glevel 1 $<
-
-%_sm.png :      %_sm.dot
-		dot -T png -o $@ $<
-
-%_sm.html :     %.sm
-		$(SMC) -table $<
+include ../C++Common.mk
 
 all :           server client
 
@@ -115,17 +79,3 @@ server :        common $(SERVER_OBJECTS)
 client :        common $(CLIENT_OBJECTS)
 		$(CXX) -g -o $@ $(COMMON_OBJECTS) $(CLIENT_OBJECTS)
 
-graph :         $(SM_SOURCES:%.sm=%_sm.dot)
-
-png :           $(SM_SOURCES:%.sm=%_sm.png)
-
-table :         $(SM_SOURCES:%.sm=%_sm.html)
-
-clean :
-		-$(RM_F) server client
-		-$(RM_F) $(COMMON_OBJECTS) $(SERVER_OBJECTS) $(CLIENT_OBJECTS)
-		-$(RM_F) *_sm.h
-		-$(RM_F) *_sm.cpp
-		-$(RM_F) *_sm.dot
-		-$(RM_F) *_sm.png
-		-$(RM_F) *_sm.html

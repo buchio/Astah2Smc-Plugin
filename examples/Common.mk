@@ -69,10 +69,6 @@ table :         $(notdir $(SM_SOURCES:%.sm=%_sm.html))
 clean :
 		-$(RM_F) $(TARGET)
 		-$(RM_F) $(OBJECTS)
-		-$(RM_F) *_sm.h
-		-$(RM_F) *_sm.c
-		-$(RM_F) *_sm.cpp
-		-$(RM_F) *_sm.rb
-		-$(RM_F) *_sm.dot
-		-$(RM_F) *_sm.png
-		-$(RM_F) *_sm.html
+		-$(RM_F) *_sm.* *.exe
+		-$(RM_F) -r *.dSYM
+
