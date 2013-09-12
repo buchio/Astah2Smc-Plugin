@@ -54,43 +54,20 @@
 # Macros.
 #
 
-SM_SOURCES=     stoplight.sm
-SOURCES=        $(SM_SOURCES:.sm=_sm.c) \
+SM_SOURCE_DIR?= ../../SmcFiles/EX4
+
+SM_SOURCES=     $(SM_SOURCE_DIR)/stoplight.sm
+SOURCES=        $(notdir $(SM_SOURCES:.sm=_sm.c)) \
                 stoplight.c \
                 main.c
-HEADERS=        $(SM_SOURCES:.sm=_sm.h) \
+HEADERS=        $(notdir $(SM_SOURCES:.sm=_sm.h)) \
                 stoplight.h
 OBJECTS=        $(SOURCES:.c=.o)
 TARGET=         ./traffic
 
-# Uncomment to turn on debug message generation.
-TRACE=          -g
+SMC_FLAGS+=     -c
 
-SMC=            java -jar ../../Smc.jar
-SMC_FLAGS=      -c $(TRACE)
-
-CC=             gcc
-CFLAGS=         -g -I../include
-
-RM_F=           rm -f
-
-#################################################################
-# Rules.
-#
-
-%_sm.h %_sm.c : %.sm
-		$(SMC) $(SMC_FLAGS) $<
-
-%_sm.dot :      %.sm
-		$(SMC) -graph -glevel 1 $<
-
-%_sm.png :      %_sm.dot
-		dot -T png -o $@ $<
-
-%_sm.html :     %.sm
-		$(SMC) -table $<
-
-all :           $(TARGET)
+include ../../Common.mk
 
 $(TARGET) :     $(HEADERS) $(SOURCES)
 		$(CC) $(CFLAGS) -o $@ $(SOURCES)
@@ -98,17 +75,3 @@ $(TARGET) :     $(HEADERS) $(SOURCES)
 test :          $(TARGET)
 		$(TARGET)
 
-graph :         $(SM_SOURCES:%.sm=%_sm.dot)
-
-png :           $(SM_SOURCES:%.sm=%_sm.png)
-
-table :         $(SM_SOURCES:%.sm=%_sm.html)
-
-clean :
-		-$(RM_F) $(TARGET)
-		-$(RM_F) $(OBJECTS)
-		-$(RM_F) *_sm.h
-		-$(RM_F) *_sm.c
-		-$(RM_F) *_sm.dot
-		-$(RM_F) *_sm.png
-		-$(RM_F) *_sm.html

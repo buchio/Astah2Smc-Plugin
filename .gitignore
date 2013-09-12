@@ -1,9 +1,6 @@
 *.o
 *.obj
-*_sm.h
-*_sm.c
-*_sm.cpp
-*_sm.rb
+*_sm.*
 *.dSYM
 *.lock
 *.back
@@ -20,3 +17,7 @@ examples/output
 /examples/C++/EX5/sleeper
 /examples/C++/EX6/client
 /examples/C++/EX6/server
+/examples/C/EX1/checkstring
+/examples/C/EX2/checkstring
+/examples/C/EX3/checkstring
+/examples/C/EX4/traffic
