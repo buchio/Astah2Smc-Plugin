@@ -51,16 +51,24 @@ public class AstahHashToSmcFiles {
 		Object[] maps = classInfo.keySet().toArray();
 		Object firstMapName = maps[0];
 		HashMap<String, String> info;
-		if (maps.length > 1) {
-			for (Object mapName : maps) {
-				HashMap<String, HashMap> map = classInfo.get(mapName);
-				info = map.get("info");
-				if (info != null && info.get("definition") != null) {
-					if (info.get("start") != null) {
-						firstMapName = mapName;
-					}
-				}
-			}
+        for (Object mapName : maps) {
+            System.out.println("    Getting info from  " + mapName);
+            HashMap<String, HashMap> map = classInfo.get(mapName);
+            info = map.get("info");
+            if ( info.get("definition") != null) {
+                for( String line : info.get("definition").split("\n") ) {
+                    String[] d = line.split( "[ :]+" );
+                    if( d.length >= 2 ) {
+                        System.out.println("      Info from definition" + d[0] + " = " + d[1] );
+                        info.put(  d[0], d[1] );
+                    }
+                }
+            }
+            
+            if (info.get("start") != null) {
+                System.out.println(" Start is  " + mapName);
+                firstMapName = mapName;
+            }
 		}
 
 		HashMap<String, HashMap> firstMap = classInfo.get(firstMapName);
@@ -80,6 +88,11 @@ public class AstahHashToSmcFiles {
 						+ info.get("start"));
 			}
 			pw.println("%class " + info.get("class"));
+
+            if( info.get( "header" ) != null ) {
+                pw.println("%header " + info.get("header") );
+            }
+
 			for (Object mapName : maps) {
 				HashMap<String, HashMap> map = classInfo.get(mapName);
 				info = map.get("info");
