@@ -31,8 +31,7 @@ import com.change_vision.jude.api.inf.exception.ProjectNotFoundException;
 import com.change_vision.jude.api.inf.project.ProjectAccessor;
 import com.change_vision.jude.api.inf.ui.IPluginActionDelegate;
 import com.change_vision.jude.api.inf.ui.IWindow;
-import com.github.buchio.Astah2Smc.Common.AstahHashToSmcFiles;
-import com.github.buchio.Astah2Smc.Common.AstahProjectToHash;
+import com.github.buchio.Astah2Smc.Common.*;
 
 
 public class Action implements IPluginActionDelegate {
