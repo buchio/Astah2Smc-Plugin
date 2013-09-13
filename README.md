@@ -2,6 +2,12 @@
 
 このプラグインは、実行したAstahファイルに含まれるクラスに内包されているステート図から[SMC](http://smc.sourceforge.net/)でコンパイルできる形式のコードを生成します。
 
+## ゴール
+
+- astahファイル中のステートマシン図を一括してsmファイルに変換する(Version1.0)
+- 選択したステートマシン図をsmファイルに変換する(未実装)
+- smファイルをインポートしてステートマシン図を生成する(未実装)
+
 [使い方](documents/usage.md)
 
 [コンパイル方法](documents/compile.md)
@@ -11,5 +17,7 @@
 [ChangeLog](ChangeLog.md)
 
 [ライセンス](LICENSE.md)
+
+------
 
 <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
