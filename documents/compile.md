@@ -2,12 +2,16 @@
 
 ## 前準備
 
+astah pluginチュートリアルに従って設定を実施してください。
+
 ## コマンドライン
 
     $ astah-build
 
 ## Eclipse
 
+pluginは規模が小さいので、自動ビルドを用いることを推奨します。
+  
 
 # CLI(Command Line Interface)
 
