@@ -4,7 +4,7 @@
 
 [使い方](documents/usage.md)
 
-[コンパイル方法](documents/compilation.md)
+[コンパイル方法](documents/compile.md)
 
 [テストと使用例](documents/test_and_examples.md)
 
