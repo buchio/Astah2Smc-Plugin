@@ -127,20 +127,34 @@
   </reporting>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
-    <testSourceDirectory>src/test/java</testSourceDirectory>
     <outputDirectory>target/classes</outputDirectory>
-    <testOutputDirectory>target/test-classes</testOutputDirectory>
     <resources>
       <resource>
 	<directory>src/main/resources</directory>
       </resource>
     </resources>
-    <testResources>
-      <testResource>
-	<directory>src/test/resources</directory>
-      </testResource>
-    </testResources>
     <plugins>
+
+      <plugin>
+	<groupId>org.codehaus.mojo</groupId>
+	<artifactId>build-helper-maven-plugin</artifactId>
+	<executions>
+	  <execution>
+	    <id>add-source</id>
+	    <phase>generate-sources</phase>
+	    <goals>
+	      <goal>add-source</goal>
+	    </goals>
+	    <configuration>
+	      <sources>
+		<source>Common/src</source>
+	      </sources>
+	    </configuration>
+	  </execution>
+	</executions>
+      </plugin>
+
+
       <plugin>
 	<artifactId>maven-dependency-plugin</artifactId>
 	<version>2.4</version>
@@ -271,12 +285,6 @@
       <artifactId>org.osgi.compendium</artifactId>
       <version>4.2.0</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.10</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>

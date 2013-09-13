@@ -29,7 +29,7 @@
 	    </goals>
 	    <configuration>
 	      <sources>
-		<source>../src/main/java/com/github/buchio/Astah2Smc/Common</source>
+		<source>../Common/src</source>
 	      </sources>
 	    </configuration>
 	  </execution>
