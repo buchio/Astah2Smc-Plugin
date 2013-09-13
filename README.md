@@ -63,3 +63,27 @@ Astahでは複数行のActionを記述することができないため、「;�
 *   ジャンクション
 *   選択
 
+# CLI(Command Line Interface)
+
+## コンパイル
+
+### 前準備
+
+コンパイル及びテストを実施するために、ローカルレポジトリにastah関連のjarファイルを登録する必要があります。
+
+#### OSX(Astah Community)の場合
+    $ mvn install:install-file -Dfile=/Applications/astah\ community/astah\ community.app/Contents/Java/astah-api.jar -DgroupId=astah_api -DartifactId=astah_api -Dversion=6.7 -Dpackaging=jar -DgeneratePom=true
+    $ mvn install:install-file -Dfile=/Applications/astah\ community/astah\ community.app/Contents/Java/astah-community.jar -DgroupId=astah_product -DartifactId=astah_product -Dversion=6.7 -Dpackaging=jar -DgeneratePom=true
+
+#### Windows(Astah UML)の場合
+    $ mvn install:install-file -Dfile='C:\Program Files\astah-UML\astah-api.jar' -DgroupId=astah_api -DartifactId=astah_api -Dversion=6.7 -Dpackaging=jar -DgeneratePom=true
+    $ mvn install:install-file -Dfile='C:\Program Files\astah-UML\astah-uml.jar' -DgroupId=astah_product -DartifactId=astah_product -Dversion=6.7 -Dpackaging=jar -DgeneratePom=true
+
+### コンパイル
+
+CLIディレクトリにて
+
+    $ mvn compile
+
+でコンパイルできます。
+

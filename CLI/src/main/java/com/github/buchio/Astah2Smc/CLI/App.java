@@ -9,8 +9,8 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.ParseException;
 
-import com.github.buchio.Astah2Smc.AstahFileToHash;
-import com.github.buchio.Astah2Smc.AstahHashToSmcFiles;
+import com.github.buchio.Astah2Smc.Common.AstahFileToHash;
+import com.github.buchio.Astah2Smc.Common.AstahHashToSmcFiles;
 
 /**
  * Astah2Smc
