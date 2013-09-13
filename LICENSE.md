@@ -1,4 +1,8 @@
-Astah2Smc-PluginはMITライセンスで提供しています。
+このプロジェクトに含まれるソースコード、ドキュメントのライセンスポリシーは以下の通りとなります。
+ファイル内に表示が無い場合は以下のポリシーから類推して下さい。
+
+
+- ソースコードはMITライセンスで提供しています。
 
     Copyright (c) 2013 Yukio Obuchi
     
@@ -19,3 +23,10 @@ Astah2Smc-PluginはMITライセンスで提供しています。
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
+
+- 使用例には、[SMC](http://smc.sourceforge.net/)プロジェクトから引用したコードが含まれています。それらは元のライセンス(MIT Version1.1)に従います。
+
+
+- ドキュメントはCreative Commons Attribution 3.0 Unported Licenseで提供しています。
+
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
