@@ -77,6 +77,17 @@ public class AstahHashToSmcFiles {
 		if (info != null) {
 			System.out.println("Creating " + fileName);
 			File file = new File(fileName);
+			if( file.exists() ) {
+				int backupNumber = 0;
+				String backupName;
+				File backupFile;
+				while( (backupFile = (new File(backupName = String.format( "%s.~%d~", fileName, backupNumber )))).exists() ) {
+					backupNumber += 1;
+				}
+				System.out.println( "Rename " + fileName + " to " + backupName + "." );
+				file.renameTo(backupFile);
+				file = new File(fileName);
+			}
 			File dir = file.getParentFile();
 			if (!dir.exists()) {
 				dir.mkdirs();
