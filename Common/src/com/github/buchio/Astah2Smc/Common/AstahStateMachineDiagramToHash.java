@@ -54,8 +54,7 @@ public class AstahStateMachineDiagramToHash {
 	private HashMap<?, ?> getStateMachineDiagramInfo(
 			IStateMachineDiagram iStateMachineDiagram) throws Exception {
 		HashMap<String, HashMap> stateMachine = new HashMap<String, HashMap>();
-		String[] splitedFullName = iStateMachineDiagram.getFullName(":").split(
-				":");
+		String[] splitedFullName = iStateMachineDiagram.getFullName(":").split(":");
 		String mapName = iStateMachineDiagram.getName();
 		String className = "";
 		if (splitedFullName.length >= 2) {
@@ -83,8 +82,7 @@ public class AstahStateMachineDiagramToHash {
 		for (IVertex iVertex : iVertexes) {
 			if (iVertex instanceof IState) {
 				if (!((IState) iVertex).isSubmachineState()) {
-					states.put(iVertex.getName(),
-							getStateInfo((IState) iVertex));
+					states.put(iVertex.getName(), getStateInfo((IState) iVertex));
 				} else if (iVertex instanceof IFinalState) {
 					// IFinalState iFinalState = (IFinalState)iVertex;
 				} else if (iVertex instanceof IPseudostate) {
@@ -102,8 +100,7 @@ public class AstahStateMachineDiagramToHash {
 			}
 		}
 		HashMap<String, String> stateMachineInfo = new HashMap<String, String>();
-		stateMachineInfo
-				.put("definition", iStateMachineDiagram.getDefinition());
+		stateMachineInfo.put("definition", iStateMachineDiagram.getDefinition());
 		stateMachineInfo.put("class", className);
 		stateMachineInfo.put("map", mapName);
 		stateMachine.put("info", stateMachineInfo);
@@ -169,7 +166,11 @@ public class AstahStateMachineDiagramToHash {
 				// Eventを「イベント|pop(復帰先に渡すイベント)」の形で記述する。
 				String[] es = iTransition.getEvent().split("\\|");
 				event = es[0];
-				transition.put("Target", es[1]);
+				if( es.length > 1 ) {
+					transition.put("Target", es[1]);
+				} else {
+					transition.put("Target", "pop(" + es[0] + ")" );
+				}
 			} else if (iPseudostate.isJunctionPseudostate()) {
 				throw new Exception("JunctionPseudostate does not supported.");
 			} else if (iPseudostate.isChoicePseudostate()) {

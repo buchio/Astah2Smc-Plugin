@@ -30,11 +30,11 @@ import com.change_vision.jude.api.inf.model.IPackage;
 
 public class AstahProjectToHash {
 	private IModel mProject;
-
+	
 	public AstahProjectToHash(IModel project) {
 		mProject = project;
 	}
-
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public HashMap<String, HashMap> getHash() throws Exception {
 		HashMap<String, HashMap> hash = new HashMap<String, HashMap>();
